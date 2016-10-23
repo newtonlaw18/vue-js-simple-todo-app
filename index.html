@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue.js Simple Todo App</title>
+
+		<link rel="stylesheet" type="text/css" href="todo.css">
+	</head>
+	<body>
+		<div id="app" class="todo-wrapper">
+			<h2>Simple Vue.js Todo App (Double click to edit)</h2>
+				<ul>
+					<li v-for="(todo, index) in todos">
+						<todo-component v-bind:todo="todo"></todo-component>
+						<button v-on:click="removeTodo(index)">x</button>
+					</li>
+				</ul>				
+			<input class="add-input" type="text" placeholder="I want to.." v-model="todoText" v-on:keyup.esc="clearTodo" v-on:keyup.enter="createTodo">
+			<button class="add-btn" v-on:click="createTodo"><h2>Add</h2></button>
+			<h2 class="totalTodos">
+				You have {{ count }} todos left!
+			</h2>
+		</div>
+
+	<script src="js/vue.js"></script>
+	<script src="js/main.js"></script>
+	</body>
+</html>
